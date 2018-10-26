@@ -1,0 +1,462 @@
+// VeiIv.cpp: определяет точку входа для консольного приложения.
+//
+
+#include "stdafx.h"
+#include "stdlib.h"
+#include "string.h"
+#include "fstream"
+#include "iostream"
+#include "conio.h"
+
+using namespace std;
+fstream file("setting.txt", ios_base::out | ios_base::app);
+void setting()
+{
+
+}
+struct Settings
+{
+	int x;
+	int sx;
+	int ax;
+	int bx;
+	int y;
+	int sy;
+	int ay;
+	int by;
+
+};
+int pr(int vvod2, int vv1)
+{
+	if (vvod2 == 0)
+	{
+		vvod2 = vvod2 + vv1;
+	}
+	else
+	{
+		vvod2 = vvod2 * 10 + vv1;
+	}
+	return vvod2;
+}
+
+int vvod_all()
+{
+	int vvod2 = 0;
+	int vv1 = 0;
+
+	char vvod1[300];
+	char zz[100];
+	int m = 0;
+	int mn = 0;
+	int jk=0;
+	while (mn != 1)
+	{
+		
+		cin >> vvod1[0];
+		for (int i = 1; i < 3; i++)
+		{
+			vvod1[i] = getchar();
+		}
+
+		for (int i = 0; i < 3; i++)
+			switch (vvod1[i])
+			{
+			case '0': vv1 = 0; vvod2 = pr(vvod2, vv1); break;
+			case '1': vv1 = 1; vvod2 = pr(vvod2, vv1); break;
+			case '2': vv1 = 2; vvod2 = pr(vvod2, vv1); break;
+			case '3': vv1 = 3; vvod2 = pr(vvod2, vv1); break;
+			case '4': vv1 = 4; vvod2 = pr(vvod2, vv1); break;
+			case '5': vv1 = 5; vvod2 = pr(vvod2, vv1); break;
+			case '6': vv1 = 6; vvod2 = pr(vvod2, vv1); break;
+			case '7': vv1 = 7; vvod2 = pr(vvod2, vv1); break;
+			case '8': vv1 = 8; vvod2 = pr(vvod2, vv1); break;
+			case '9': vv1 = 9; vvod2 = pr(vvod2, vv1); break;
+			default: cout << "Number " << i << " wrong" << endl; jk= jk + 1;
+				break;
+			}
+
+		char *p = vvod1;
+		while (*p++ = getchar() != '\n')
+			*p = '\0';
+		/*if ((vvod1[i] != '0') & (vvod1[i] != '1') & (vvod1[i] != '2') & (vvod1[i] != '3') & (vvod1[i] != '4') & (vvod1[i] != '5') & (vvod1[i] != '6') & (vvod1[i] != '7') & (vvod1[i] != '8') & (vvod1[i] != '9'))
+		{
+		cout << "One of number, not number" << endl;
+		}
+		else
+		{
+		if (vvod2 == 0)
+		{
+		vvod2 = vvod2 + vvod1[i];
+		}
+		else
+		{
+		vvod2 = vvod2 * 10 + vvod1[i];
+		}
+		}*/
+		if (jk == 0)
+		{
+			mn = 1;
+		}
+		else
+		{
+			cout << "Repeat enter" << endl;
+			jk = 0;
+		}
+	}
+	return vvod2;
+
+}
+
+int ck_vl()
+{
+	int pr = 0;  //проверка
+	int vvod;
+	do {
+		vvod= vvod_all();
+		if (vvod >= 0 & vvod < 1000)
+		{
+			pr = 1;
+		}
+		else
+		{
+			cout << "Repeat enter" << endl;
+		}
+	} while (pr != 1);
+	return vvod;
+}
+int ck_df_ax(Settings def)
+{
+	int pr = 0;
+	int vvod;
+	do {
+		vvod = vvod_all();
+		if (vvod == 0)
+		{
+			return def.ax;
+		}
+		else {
+			if (vvod > 0 & vvod < 1000)
+			{
+				pr = 1;
+			}
+			else
+			{
+				cout << "Repeat enter" << endl;
+			}
+		}
+	} while (pr != 1);
+	return vvod;
+}
+int ck_df_ay(Settings def)
+{
+	int pr = 0;
+	int vvod;
+	do {
+		vvod = vvod_all();
+		if (vvod == 0)
+		{
+			return def.ay;
+		}
+		else {
+			if (vvod > 0 & vvod < 1000)
+			{
+				pr = 1;
+			}
+			else
+			{
+				cout << "Repeat enter" << endl;
+			}
+		}
+	} while (pr != 1);
+	return vvod;
+}
+int ck_df_bx(Settings def)
+{
+	int pr = 0;
+	int vvod;
+	do {
+		vvod = vvod_all();
+		if (vvod == 0)
+		{
+			return def.bx;
+		}
+		else {
+			if (vvod > 0 & vvod < 1000)
+			{
+				pr = 1;
+			}
+			else
+			{
+				cout << "Repeat enter" << endl;
+			}
+		}
+	} while (pr != 1);
+	return vvod;
+}
+int ck_df_by(Settings def)
+{
+	int pr = 0;
+	int vvod;
+	do {
+		vvod = vvod_all();
+		if (vvod == 0)
+		{
+			return def.by;
+		}
+		else {
+			if (vvod > 0 & vvod < 1000)
+			{
+				pr = 1;
+			}
+			else
+			{
+				cout << "Repeat enter" << endl;
+			}
+		}
+	} while (pr != 1);
+	return vvod;
+}
+int ck_df_sx(Settings def)
+{
+	int pr = 0;
+	int vvod;
+	do {
+		vvod = vvod_all();
+		if (vvod == 0)
+		{
+			return def.sx;
+		}
+		else {
+			if (vvod > 0 & vvod < 1000)
+			{
+				pr = 1;
+			}
+			else
+			{
+				cout << "Repeat enter" << endl;
+			}
+		}
+	} while (pr != 1);
+	return vvod;
+}
+int ck_df_sy(Settings def)
+{
+	int pr = 0;
+	int vvod;
+	do {
+		vvod = vvod_all();
+		if (vvod == 0)
+		{
+			return def.sy;
+		}
+		else {
+			if (vvod > 0 & vvod < 1000)
+			{
+				pr = 1;
+			}
+			else
+			{
+				cout << "Repeat enter" << endl;
+			}
+		}
+	} while (pr != 1);
+	return vvod;
+}
+void vvod_x(Settings set)
+{
+	if (file.is_open())
+	{
+		if (set.x < 100)
+		{
+			if (set.x < 10)
+			{
+				file << "00" << set.x;
+			}
+			else
+				file << "0" << set.x;
+		}
+		else file << set.x;
+	}
+}
+void vvod_y(Settings set)
+{
+	if (file.is_open())
+	{
+		if (set.y < 100)
+		{
+			if (set.y < 10)
+			{
+				file << "00" << set.y;
+			}
+			else
+				file << "0" << set.y;
+		}
+		else file << set.y;
+	}
+}
+void vvod_ax(Settings set)
+{
+	if (file.is_open())
+	{
+		if (set.ax < 100)
+		{
+			if (set.ax < 10)
+			{
+				file << "00" << set.ax;
+			}
+			else
+				file << "0" << set.ax;
+		}
+		else file << set.ax;
+	}
+}
+void vvod_ay(Settings set)
+{
+	if (file.is_open())
+	{
+		if (set.ay < 100)
+		{
+			if (set.ay < 10)
+			{
+				file << "00" << set.ay;
+			}
+			else
+				file << "0" << set.ay;
+		}
+		else file << set.ay;
+	}
+}
+void vvod_bx(Settings set)
+{
+	if (file.is_open())
+	{
+		if (set.bx < 100)
+		{
+			if (set.bx < 10)
+			{
+				file << "00" << set.bx << " ";
+			}
+			else
+				file << "0" << set.bx << " ";
+		}
+		else file << set.bx << " ";
+	}
+}
+void vvod_by(Settings set)
+{
+	if (file.is_open())
+	{
+		if (set.by < 100)
+		{
+			if (set.by < 10)
+			{
+				file << "00" << set.by << " ";
+			}
+			else
+				file << "0" << set.by << " ";
+		}
+		else file << set.by << " ";
+	}
+}
+void vvod_sx(Settings set)
+{
+	if (file.is_open())
+	{
+		if (set.sx < 100)
+		{
+			if (set.sx < 10)
+			{
+				file << "00" << set.sx << " ";
+			}
+			else
+				file << "0" << set.sx << " ";
+		}
+		else file << set.sx << " ";
+	}
+}
+void vvod_sy(Settings set)
+{
+	if (file.is_open())
+	{
+		if (set.sy < 100)
+		{
+			if (set.sy < 10)
+			{
+				file << "00" << set.sy << " ";
+			}
+			else
+				file << "0" << set.sy << " ";
+		}
+		else file << set.sy << " ";
+	}
+}
+
+void massiv(Settings set)
+{
+	char *massiv[8];
+	char p[3];
+		_itoa(set.x, p, 10);
+		massiv[0] = p;
+		_itoa(set.ax, p, 10);
+		massiv[1] = p;
+		_itoa(set.sx, p, 10);
+		massiv[2] = p;
+		_itoa(set.bx, p, 10);
+		massiv[3] = p;
+		_itoa(set.y, p, 10);
+		massiv[4] = p;
+		_itoa(set.sy, p, 10);
+		massiv[5] = p;
+		_itoa(set.ay, p, 10);
+		massiv[6] = p;
+		_itoa(set.by, p, 10);
+		massiv[7] = p;
+
+
+	for (int i = 0; i < 8; i++)
+		cout << massiv[i];
+}
+
+
+
+int main(int argc, char *argv[]) {
+
+	Settings def, set;
+
+	def.x = 0;
+	def.y = 0;
+	def.ax = 20;		// Можно брать из файла
+	def.ay = 20;
+	def.bx = 20;
+	def.by = 20;
+	def.sx = 10;
+	def.sy = 10;
+	
+	int sw = 1;
+	while (sw)
+	{
+		cout << "------MENU------\n1) Change setting\n2) Return\n3) Exit from programm\nYour choice\n>>";
+		cin >> sw;
+		switch (sw)
+		{
+		case 0:  cout << "Sth wrong. Try again!\n"; break;
+		case 1:
+			cout << "You in settings.." << endl;
+			cout << "Enter the Xpos\n>>"; set.x = ck_vl(); vvod_x(set);
+			cout << "Enter the Ypos\n>>"; set.y = ck_vl(); vvod_y(set);
+			cout << "Enter the Xacc\n>>"; set.ax = ck_df_ax(def); vvod_ax(set);
+			cout << "Enter the Yacc\n>>"; set.ay = ck_df_ay(def); vvod_ay(set);
+			cout << "Enter the Xbrk\n>>"; set.bx = ck_df_bx(def); vvod_bx(set);
+			cout << "Enter the Ybrk\n>>"; set.by = ck_df_by(def); vvod_by(set);
+			cout << "Enter the Xspd\n>>"; set.sx = ck_df_sx(def); vvod_sx(set);
+			cout << "Enter the Yspd\n>>"; set.sy = ck_df_sy(def); vvod_sy(set);
+			massiv(set);
+			break;
+		case 2: cout << "You choosed return" << endl; break;
+		case 3: cout << "You choosed exit" << endl; return 0;
+		default: cout << "Sth wrong. Try again!\n"; break;
+		}
+	}
+	system("pause");
+	return 0;
+}
